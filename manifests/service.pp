@@ -9,6 +9,7 @@ class docker::service(
   $machinename = undef,
   $service = undef,
   $user = undef,
+  $vboxdir = undef,
 ) {
 
   $service_ensure = $ensure ? {
@@ -37,10 +38,11 @@ class docker::service(
         "DOCKER_CONFIG=${configdir}",
         "MACHINE_STORAGE_PATH=${datadir}",
       ],
-      user        => $user,
-      unless      => $unless,
-      before      => Service['docker'],
-      notify      => Service['docker'];
+      user    => $user,
+      unless  => $unless,
+      path    => "${vboxdir}:${::path}",
+      before  => Service['docker'],
+      notify  => Service['docker'];
     }
 
     file { "/Library/LaunchDaemons/${service}.plist":
