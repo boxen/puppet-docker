@@ -38,11 +38,11 @@ class docker::service(
         "DOCKER_CONFIG=${configdir}",
         "MACHINE_STORAGE_PATH=${datadir}",
       ],
-      user    => $user,
-      unless  => $unless,
-      path    => "${vboxdir}:${::path}",
-      before  => Service['docker'],
-      notify  => Service['docker'];
+      user        => $user,
+      unless      => $unless,
+      path        => "${vboxdir}:${::path}",
+      before      => Service['docker'],
+      notify      => Service['docker'];
     }
 
     file { "/Library/LaunchDaemons/${service}.plist":
