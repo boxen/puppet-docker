@@ -14,6 +14,7 @@ class docker(
   $machinename = undef,
   $service = undef,
   $user = undef,
+  $vboxdir = undef,
 ) {
 
   validate_string(
@@ -24,6 +25,7 @@ class docker(
     $machinename,
     $service,
     $user,
+    $vboxdir,
   )
   validate_bool($enable)
 
@@ -38,6 +40,7 @@ class docker(
     logdir      => $logdir,
     machinename => $machinename,
     user        => $user,
+    vboxdir     => $vboxdir,
   }
 
   ~>
@@ -60,6 +63,7 @@ class docker(
     machinename => $machinename,
     service     => $service,
     user        => $user,
+    vboxdir     => $vboxdir,
   }
 
 }

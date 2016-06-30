@@ -7,6 +7,7 @@ class docker::config(
   $logdir = undef,
   $machinename = undef,
   $user = undef,
+  $vboxdir = undef,
 ) {
 
   $dir_ensure = $ensure ? {
@@ -17,7 +18,7 @@ class docker::config(
   file { [
     $configdir,
     $datadir,
-    $logdir
+    $logdir,
   ]:
     ensure => $dir_ensure,
     owner  => $user,

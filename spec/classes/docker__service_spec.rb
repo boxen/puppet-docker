@@ -10,6 +10,7 @@ describe 'docker::service' do
     :machinename  => 'test',
     :service      => 'dev.docker',
     :user         => 'testuser',
+    :vboxdir      => '/test/boxen/virtualbox/bin'
   } }
 
   let(:facts) { default_test_facts }
@@ -49,6 +50,7 @@ describe 'docker::service' do
             'DOCKER_CONFIG=/test/boxen/config/docker',
             'MACHINE_STORAGE_PATH=/test/boxen/data/docker',
           ],
+          :path         => %r{/test/boxen/virtualbox/bin},
           :user         => 'testuser',
           :unless       => '/test/boxen/homebrew/bin/docker-machine status test',
         })
@@ -66,6 +68,7 @@ describe 'docker::service' do
             'DOCKER_CONFIG=/test/boxen/config/docker',
             'MACHINE_STORAGE_PATH=/test/boxen/data/docker',
           ],
+          :path         => %r{/test/boxen/virtualbox/bin},
           :user         => 'testuser',
           :unless       => nil,
         })

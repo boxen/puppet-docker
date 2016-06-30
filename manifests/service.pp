@@ -9,6 +9,7 @@ class docker::service(
   $machinename = undef,
   $service = undef,
   $user = undef,
+  $vboxdir = undef,
 ) {
 
   $service_ensure = $ensure ? {
@@ -39,6 +40,7 @@ class docker::service(
       ],
       user        => $user,
       unless      => $unless,
+      path        => "${vboxdir}:${::path}",
       before      => Service['docker'],
       notify      => Service['docker'];
     }
