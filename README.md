@@ -51,6 +51,7 @@ docker::machinename: "local"
 docker::configdir: "%{::boxen::config::configdir}/docker"
 docker::datadir: "%{::boxen::config::datadir}/docker"
 docker::logdir: "%{::boxen::config::logdir}/docker"
+docker::vboxdir: "%{::homebrew_root}/bin"
 ```
 
 It is **required** that you include
